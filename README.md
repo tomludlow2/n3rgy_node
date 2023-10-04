@@ -8,7 +8,26 @@ This project consists of Node.js scripts that interact with the n3rgy domain to 
 
 Follow these steps to set up the project:
 
-1. **Clone the Repository**:
+1. **n3rgy setup**
+Navigate to n3rgy consumer login [here](https://data.n3rgy.com/consumer-login)
+Input your MPxN into the box, this will be found on your meter (either the MPAN or MPRN), you only need one from either the gas or electricity meter. 
+Click Login.
+On the next screen, click on IHD MAC Authentication 
+You will need to find the MAC address on your home smart meter. 
+Type the MAC Adress into this box without spaces / hyphens, all in caps. 
+Copy this value before clicking login (this will be your `auth_token` later on)
+Click Login
+
+Follow instructions to authorise n3rgy to read your consumption and tariff
+
+You should reach a screen with an option to "Access My Data", currently found [here](https://data.n3rgy.com/consumer/download-data)
+
+As a test to check that n3rgy can get your data (and hence this API), run a test chosing a start date (must be after you signed up) and end date, ticking electricity -> consumption first as a test, then the same for gas -> consumption. Click Download.
+
+If this downloads with appropriate data, you are ready to configure the api.
+
+
+2. **Clone the Repository**:
 
    Clone the project repository to your local machine:
 
@@ -17,7 +36,7 @@ Follow these steps to set up the project:
    ```
 
 
-2. **Navigate to the Project Directory**:
+3. **Navigate to the Project Directory**:
 
 Change your working directory to the project folder:
 
@@ -26,7 +45,7 @@ Change your working directory to the project folder:
    cd your-repo
    ```
 
-3. **Install Dependencies**:
+4. **Install Dependencies**:
 
 Install any necessary dependencies:
 You will require an up to date node runtime and packages: https and fs
@@ -35,9 +54,6 @@ You can install these with npm
    ```bash
    npm install https
    ```
-
-4. **n3rgy signup**
-
 
 5. **Configuration**:
 
