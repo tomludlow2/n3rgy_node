@@ -89,7 +89,7 @@ Replace `"yourAccessToken"` with your actual access token.
 Replace `"start_date"` with the start date for your energy request format `yyyymmdd`
 Replace `"end_date"` with the end date for your request (specify today and you will get the most up to date info they have although there is a delay with n3rgy data (typically 12 hours or so))
 
-## Running the Project
+## Collecting Consumption Data
 
 To run the project and collect JSON data, follow these steps:
 
@@ -112,3 +112,28 @@ You can access the collected data in the json files for further analysis or use 
 That's it! You now have the project set up, and you can run the script to collect JSON data related to electricity and gas usage from the n3rgy domain.
 
 Feel free to customize and expand upon this documentation template as needed for your project.
+
+
+## Collecting Tafiff Data
+
+To run the project and collect JSON data, follow these steps:
+
+1. **Setup Tariff File**
+- Rename `tariff_template.json` to `tariff.json`  in the project directory.
+   ```bash
+     cp tariff_template.json tariff.json
+     ```
+
+2. **Execute the Script**:
+
+Run the Node.js script to fetch and process data:
+This will collect the current tariff information for both gas and electricity and store it
+You may experience errors if the tariff during the last 24 hours.
+
+   ```bash
+   node tariff_update.js
+   ```
+
+3. **Data Storage**:
+
+The script will collect and process data from the n3rgy domain and store it in the local JSON file `tariff.json`.
