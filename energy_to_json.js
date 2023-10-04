@@ -1,9 +1,5 @@
 const https = require('https');
 const fs = require('fs');
-const start = '20231001';
-const end = '20231005';
-const output = 'json';
-const queryString = `start=${start}&end=${end}&output=${output}`;
 
 //Read your access token from config.json
 let config;
@@ -14,8 +10,12 @@ try {
 	process.exit(1);
 }
 
-
 const access_token = config.auth_token;
+const start = config.start_date;
+const end = config.end_date;
+const output = 'json';
+const queryString = `start=${start}&end=${end}&output=${output}`;
+
 
 const options_electricity = {
 	hostname: "consumer-api.data.n3rgy.com",
