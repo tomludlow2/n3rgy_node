@@ -38,6 +38,7 @@ Follow these steps to set up the project:
 
 1. **n3rgy setup**
 
+   - Ensure the above has been setup
 
 
 2. **Clone the Repository**:
@@ -71,6 +72,9 @@ You can install these with npm
 5. **Configuration**:
 
 - Rename `config_template.json` to `config.json`  in the project directory.
+   ```bash
+     cp config_template.json config.json
+     ```
 
 - Add your n3rgy access token to the `config.json` file:
 
