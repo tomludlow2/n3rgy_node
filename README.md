@@ -4,20 +4,25 @@
 
 This project consists of Node.js scripts that interact with the n3rgy domain to collect JSON data related to electricity and gas usage. These scripts are designed to fetch data, process it, and store it locally for further analysis or use. This documentation provides instructions on how to set up and use these scripts.
 
-## How to Install
+## n3rgy Setup
+1. **Collect Info you will need**
 
-Follow these steps to set up the project:
+   You will need the following:
+   - `MPxN` Number - either an MPAN or MPRN from a smart meter (these should be on either the gas or electric meter)
+   - Write down both in case one doesn't work although technically either should work
+   - `IHD MAC Address` - Found on a home smart meter panel (the device from your energy provider that shows your usage, typically small LCD displays mounted in the kitchen / hallway).
 
-1. **n3rgy setup**
-Navigate to n3rgy consumer login [here](https://data.n3rgy.com/consumer-login)
-Input your MPxN into the box, this will be found on your meter (either the MPAN or MPRN), you only need one from either the gas or electricity meter. 
-Click Login.
-On the next screen, click on IHD MAC Authentication 
-You will need to find the MAC address on your home smart meter. 
-Type the MAC Adress into this box without spaces / hyphens, all in caps. 
-Copy this value before clicking login (this will be your `auth_token` later on)
-Click Login
+2. **Signup online**
 
+   - Navigate to n3rgy consumer login [here](https://data.n3rgy.com/consumer-login)
+   - Input your `MPxN` into the box, this will be found on your meter (either the MPAN or MPRN), you only need one from either the gas or electricity meter. 
+   - Click Login.
+   - On the next screen, click on IHD MAC Authentication 
+   - Type the `IHD MAC Address` into this box without spaces / hyphens, all in caps. 
+   - Copy this value before clicking login (this will be your `auth_token` later on)
+   - Click Login
+
+3. **Authorise n3rgy**
 Follow instructions to authorise n3rgy to read your consumption and tariff
 
 You should reach a screen with an option to "Access My Data", currently found [here](https://data.n3rgy.com/consumer/download-data)
@@ -25,6 +30,14 @@ You should reach a screen with an option to "Access My Data", currently found [h
 As a test to check that n3rgy can get your data (and hence this API), run a test chosing a start date (must be after you signed up) and end date, ticking electricity -> consumption first as a test, then the same for gas -> consumption. Click Download.
 
 If this downloads with appropriate data, you are ready to configure the api.
+
+
+## How to Install
+
+Follow these steps to set up the project:
+
+1. **n3rgy setup**
+
 
 
 2. **Clone the Repository**:
