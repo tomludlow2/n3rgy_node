@@ -114,7 +114,7 @@ That's it! You now have the project set up, and you can run the script to collec
 Feel free to customize and expand upon this documentation template as needed for your project.
 
 
-## Collecting Tafiff Data
+## Collecting Tariff Data
 
 To run the project and collect JSON data, follow these steps:
 
