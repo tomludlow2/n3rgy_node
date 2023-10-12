@@ -172,7 +172,7 @@ Where `total_kwh` is the total kilo-watt hours of energy used, `total_cost` is t
 
 The code can easily be reproduced to generate similar reports for any data set you have. The general requirement:
 
-```json
+```node
    const electric_to_cost = require("./functions/electricity_to_cost.js");
    const gas_to_cost = require("./functions/gas_to_cost.js");
 
