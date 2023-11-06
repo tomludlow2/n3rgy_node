@@ -201,3 +201,18 @@ The code can easily be reproduced to generate similar reports for any data set y
 
    //Each function will return the data you see in the report.json files
 ```
+
+
+## Generating Full Month Reports
+
+Uses `get_for_dates_test.js`
+
+Within this function simply change date 1 to `YYYYMMDD` e.g. `20230401` and date 2 to e.g. `20230501` using month to month of same day to get full month (otherwise will return one day short). Change the third parameter to a descriptor e.g. `APR_23` etc. 
+
+This will create a file `reports/APR_23_electric.json` and `reports/APR_23_gas.json`
+
+Then open `functions/generate_report_for_file.js`
+In `electric_files_to_run` and `gas_files_to_run` input the names of the reports you wish to run 
+Also change `output_file` within the gas and electric functions to wherever you would like the report saving.
+
+Run this file, which will produce a report file for all files in the array. 
