@@ -218,7 +218,7 @@ Also change `output_file` within the gas and electric functions to wherever you 
 Run this file, which will produce a report file for all files in the array. 
 
 
-## Preparing for influx
+## Preparing for influx & inserting into the InfluxDB
 Using `functions/prepare_for_influx.js` and `get_for_dates_full.js`
 - Run `get_for_dates_full.js` which you should populate to fill the relevant dates (using 5 day intervals helps to prevent excessive data per one file insert). Field 2 needs to contain a filename in the format of `data_to_import_xx` where xx is an incremental value, and will be appended with the gas and then electric values ready for import.
 - These files will be stored in `reports/` directory.
@@ -231,6 +231,9 @@ Using `functions/prepare_for_influx.js` and `get_for_dates_full.js`
 -- Converts the data into the right format for storage using the InfluxDB API I have created
 -- The outputs are then stored in `pending_influx/`  directory.
 -- These files are stored in the `json` format ready to be inserted using the `/submit_energy` endpoint
+- The next step is the call `process_prepared_files.js` which will loop through all the files one by one and submit, it manually asks for the array key of the next file you want to import, (noted in current example as files are no zero-prefixed) this creates an abnormal entry pattern
+
+
 
 
 ## Misc File Information
