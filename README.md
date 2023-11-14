@@ -216,3 +216,24 @@ In `electric_files_to_run` and `gas_files_to_run` input the names of the reports
 Also change `output_file` within the gas and electric functions to wherever you would like the report saving.
 
 Run this file, which will produce a report file for all files in the array. 
+
+
+## Preparing for influx
+Using `functions/prepare_for_influx.js` and `get_for_dates_full.js`
+- Run `get_for_dates_full.js` which you should populate to fill the relevant dates (using 5 day intervals helps to prevent excessive data per one file insert). Field 2 needs to contain a filename in the format of `data_to_import_xx` where xx is an incremental value, and will be appended with the gas and then electric values ready for import.
+- These files will be stored in `reports/` directory.
+- Then run `prepare_for_influx.js` to prepare the files, this will perform the following.
+- Opens relevant files, including `config` and `tariff` -> Both must have been set before calling this
+- Then looks inside a directory, held in `directoryPath` at the top of the function
+- Looks through these for files that match the reg expression for `data_to_import_xx_electric/gas.json`
+- These files should already exist and are created through the process above
+- The function then arranges the data:
+-- Converts the data into the right format for storage using the InfluxDB API I have created
+-- The outputs are then stored in `pending_influx/`  directory.
+-- These files are stored in the `json` format ready to be inserted using the `/submit_energy` endpoint
+
+
+## Misc File Information
+
+- `electricity_to_cost_basic.js` and `gas_to_cost_basic.js` simply convert electricity usage and gas usage to cost
+-- Call as `func(tariff, usage)` or `fn(tariff, usage, conversion)` and receive a cost back in pounds

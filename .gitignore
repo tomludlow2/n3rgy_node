@@ -3,3 +3,4 @@ electricity.json
 gas.json
 tariff.json
 reports
+pending_influx
