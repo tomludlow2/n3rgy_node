@@ -10,6 +10,15 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+//Read your access token from config.json
+let config;
+try {
+  config = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/config.json', 'utf-8'));
+}catch(error) {
+  console.error('Error reading config.json: ', error.message);
+  process.exit(1);
+}
+
 function processNextFile(index) {
   if (index === files.length) {
     rl.close();
@@ -34,7 +43,7 @@ function processNextFile(index) {
       url: 'http://192.168.68.68:52525/submit_energy',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer JzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ',
+        'Authorization': 'Bearer ' + config.bearer_token,
       },
       body: JSON.stringify(fileContents),
     };

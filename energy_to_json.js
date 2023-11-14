@@ -4,7 +4,7 @@ const fs = require('fs');
 //Read your access token from config.json
 let config;
 try {
-	config = JSON.parse(fs.readFileSync('config.json', 'utf-8'));
+	config = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/config.json', 'utf-8'));
 }catch(error) {
 	console.error('Error reading config.json: ', error.message);
 	process.exit(1);
@@ -57,7 +57,7 @@ const req_e = https.request(options_electricity, (res) => {
 			}));
 
 			//Write the processed data to a JSON file
-			fs.writeFileSync('electricity.json', JSON.stringify(processedData, null, 2));
+			fs.writeFileSync('/home/tom/n3rgy_node/electricity.json', JSON.stringify(processedData, null, 2));
 			console.log('Data written to electricity.json');
 		}catch (error) {
 			console.error(`Error parsing or writing data: ${error.message}`);
@@ -93,7 +93,7 @@ const req_g = https.request(options_gas, (res) => {
 			}));
 
 			//Write the processed data to a JSON file
-			fs.writeFileSync('gas.json', JSON.stringify(processedData, null, 2));
+			fs.writeFileSync('/home/tom/n3rgy_node/gas.json', JSON.stringify(processedData, null, 2));
 			console.log('Data written to gas.json');
 		}catch (error) {
 			console.error(`Error parsing or writing data: ${error.message}`);

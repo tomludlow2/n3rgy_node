@@ -2,5 +2,6 @@
 	"auth_token": "your_access_token",
 	"start_date": "20231001",
 	"end_date": "20231004",
-	"gas_conversion": 11.3910733
+	"gas_conversion": 11.3910733,
+	"bearer_token": ""
 }

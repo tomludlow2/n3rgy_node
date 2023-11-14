@@ -9,7 +9,7 @@ const directoryPath = '/home/tom/n3rgy_node/reports';
 //Read your access token from config.json
 let config;
 try {
-	config = JSON.parse(fs.readFileSync('../config.json', 'utf-8'));
+	config = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/config.json', 'utf-8'));
 }catch(error) {
 	console.error('Error reading config.json: ', error.message);
 	process.exit(1);
@@ -19,7 +19,7 @@ const gas_conversion = config.gas_conversion;
 //Read your tariff from tariff.json
 let tariff;
 try {
-	tariff = JSON.parse(fs.readFileSync('../tariff.json', 'utf-8'));
+	tariff = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/tariff.json', 'utf-8'));
 }catch(error) {
 	console.error('Error reading tariff.json: ', error.message);
 	process.exit(1);
@@ -131,7 +131,7 @@ function convertData(gas_file, electric_file, output_file_name) {
 
 	console.log(output);
 
-	const output_file = "../pending_influx/" + output_file_name+ ".json";
+	const output_file = "/home/tom/n3rgy_node/pending_influx/" + output_file_name+ ".json";
 	fs.writeFile(output_file, JSON.stringify(output, null, 2), "utf-8", (err) => {
 	 	if (err) {
 			console.error(`Error writing to ${output_file}: ${err}`);

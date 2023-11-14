@@ -4,7 +4,7 @@ const fs = require('fs');
 //Read your access token from config.json
 let config;
 try {
-	config = JSON.parse(fs.readFileSync('config.json', 'utf-8'));
+	config = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/config.json', 'utf-8'));
 }catch(error) {
 	console.error('Error reading config.json: ', error.message);
 	process.exit(1);
@@ -108,7 +108,7 @@ const req_e = https.request(options_electricity, (res) => {
 			console.log("All Unit Prices are the same.");
 
 			try {
-				tariff = JSON.parse(fs.readFileSync('tariff.json', 'utf-8'));
+				tariff = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/tariff.json', 'utf-8'));
 				tariff.electricity.standing_charge = standingCharges;
 				tariff.electricity.unit_price = unitPrices;
 				const updatedJsonData = JSON.stringify(tariff, null, 2);
@@ -184,11 +184,11 @@ const req_g = https.request(options_gas, (res) => {
 			console.log("All Unit Prices are the same.");
 
 			try {
-				tariff = JSON.parse(fs.readFileSync('tariff.json', 'utf-8'));
+				tariff = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/tariff.json', 'utf-8'));
 				tariff.gas.standing_charge = standingCharges;
 				tariff.gas.unit_price = unitPrices;
 				const updatedJsonData = JSON.stringify(tariff, null, 2);
-				fs.writeFile("tariff.json", updatedJsonData, 'utf-8', (err) => {
+				fs.writeFile("/home/tom/n3rgy_node/tariff.json", updatedJsonData, 'utf-8', (err) => {
 					if( err) {
 						console.log('Error writing tariff for gas:', err);
 					}else {

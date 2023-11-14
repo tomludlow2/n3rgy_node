@@ -90,6 +90,7 @@ Replace `"start_date"` with the start date for your energy request format `yyyym
 Replace `"end_date"` with the end date for your request (specify today and you will get the most up to date info they have although there is a delay with n3rgy data (typically 12 hours or so))
 Replace `"gas_consumption"` with the factor that converts your reading to kWh. To find this, look on your energy bill for a section under Gas Charges. Typically: `Gas UNITS x Calorific Value x Volume Correction / Modifier`  e.g. `Units x Calorific Value(40.1) * Volume Correction (1.02264) / 3.6 = 11.3910733` for my supply. 
 Set this value to 1 if your n3rgy account is supplying energy in kWh already. 
+Replace `"bearer_token"` with the bearer token for your instance of my InfluxDBAPI if using this
 
 ## Collecting Consumption Data
 
