@@ -30,7 +30,7 @@ try {
 
 
 //Get the last 7 days.
-function get_for_date_range(start_date, end_date, log_file) {
+async function get_for_date_range(start_date, end_date, log_file) {
 	//Expects YYYY-MM-DD HH:MM
 	/*OLD FUNCTION
 	const today = new Date(); // Get the current date and time
@@ -124,7 +124,7 @@ function get_for_date_range(start_date, end_date, log_file) {
 
 					if( log_file ) {
 						const electric_report_file = `/home/tom/n3rgy_node/reports/${log_file}_electric.json`;
-						fs.writeFile(electric_report_file, json_str, 'utf8', (err) => {
+						fs.writeFileSync(electric_report_file, json_str, 'utf8', (err) => {
 							if(err) {
 								console.error("Could not write electric file:", err);
 							}else {
@@ -137,7 +137,7 @@ function get_for_date_range(start_date, end_date, log_file) {
 				}catch (error) {
 					if( log_file ) {
 						const electric_report_file = `/home/tom/n3rgy_node/reports/${log_file}_electric.json`;
-						fs.writeFile(electric_report_file, error, 'utf8', (err) => {
+						fs.writeFileSync(electric_report_file, error, 'utf8', (err) => {
 							if(err) {
 								console.error("Could not write electric file:", err);
 							}else {
@@ -154,7 +154,7 @@ function get_for_date_range(start_date, end_date, log_file) {
 		req_e.on('error', (err) => {
 			if( log_file ) {
 				const electric_report_file = `/home/tom/n3rgy_node/reports/${log_file}_electric.json`;
-				fs.writeFile(electric_report_file, error, 'utf8', (err) => {
+				fs.writeFileSync(electric_report_file, error, 'utf8', (err) => {
 					if(err) {
 						console.error("Could not write electric file:", err);
 					}else {
@@ -204,7 +204,7 @@ function get_for_date_range(start_date, end_date, log_file) {
 					//Write out the report to the json file
 					const json_str = JSON.stringify(output, null, 2);
 					const gas_report_file = `/home/tom/n3rgy_node/reports/${log_file}_gas.json`;
-					fs.writeFile(gas_report_file, json_str, 'utf8', (err) => {
+					fs.writeFileSync(gas_report_file, json_str, 'utf8', (err) => {
 						if(err) {
 							console.error("Could not write gas file:", err);
 						}else {
@@ -215,7 +215,7 @@ function get_for_date_range(start_date, end_date, log_file) {
 				}catch (error) {
 					if( log_file ) {
 						const gas_report_file = `/home/tom/n3rgy_node/reports/${log_file}_gas.json`;
-						fs.writeFile(gas_report_file, error, 'utf8', (err) => {
+						fs.writeFileSync(gas_report_file, error, 'utf8', (err) => {
 							if(err) {
 								console.error("Could not write gas file:", err);
 							}else {
@@ -232,7 +232,7 @@ function get_for_date_range(start_date, end_date, log_file) {
 		req_g.on('error', (err) => {
 			if( log_file ) {
 				const gas_report_file = `/home/tom/n3rgy_node/reports/${log_file}_gas.json`;
-				fs.writeFile(gas_report_file, error, 'utf8', (err) => {
+				fs.writeFileSync(gas_report_file, error, 'utf8', (err) => {
 					if(err) {
 						console.error("Could not write gas file:", err);
 					}else {
