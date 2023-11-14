@@ -1,7 +1,7 @@
 //This function prepares a given data set for insertion into the InfluxDB Node API that I have made
 
-const electricity_to_cost = require("./electricity_to_cost_basic.js");
-const gas_to_cost = require("./gas_to_cost_basic.js");
+const electricity_to_cost = require("/home/tom/n3rgy_node/functions/electricity_to_cost_basic.js");
+const gas_to_cost = require("/home/tom/n3rgy_node/functions/gas_to_cost_basic.js");
 const fs = require('fs');
 const path = require("path");
 const directoryPath = '/home/tom/n3rgy_node/reports';
@@ -87,7 +87,8 @@ console.log('Gas Files:');
 console.log(gasFiles);
 
 if(electricFiles.length == gasFiles.length) {
-	for (var i = 0; i < gasFiles.length-1; i++) {
+	for (var i = 0; i < gasFiles.length; i++) {
+		console.log("Now working on file:", i, gasFiles[i], electricFiles[i]);
 		convertData(gasFiles[i].filePath, electricFiles[i].filePath, "pending_insert_" + i);
 	}
 }
@@ -97,13 +98,11 @@ function convertData(gas_file, electric_file, output_file_name) {
 	const gas_data = JSON.parse(fs.readFileSync(gas_file, "utf-8"));
 	const electric_data = JSON.parse(fs.readFileSync(electric_file, "utf-8"));
 
-	
-
 	const gas_output = [];
 	const electric_output = [];
 
 	gas_data.forEach((data_point) => {
-		console.log("Sorting data point", data_point);
+		//console.log("Sorting data point", data_point);
 		let processesd_data = gas_to_cost(tariff, data_point.value, gas_conversion);
 		let new_data_point = {
 			timestamp: data_point.timestamp,
@@ -114,7 +113,7 @@ function convertData(gas_file, electric_file, output_file_name) {
 	});
 
 	electric_data.forEach((data_point) => {
-		console.log("Sorting data point", data_point);
+		//console.log("Sorting data point", data_point);
 		let processesd_data = electricity_to_cost(tariff, data_point.value);
 		let new_data_point = {
 			timestamp: data_point.timestamp,
@@ -129,7 +128,7 @@ function convertData(gas_file, electric_file, output_file_name) {
 		"gas": gas_output
 	};
 
-	console.log(output);
+	//console.log(output);
 
 	const output_file = "/home/tom/n3rgy_node/pending_influx/" + output_file_name+ ".json";
 	fs.writeFile(output_file, JSON.stringify(output, null, 2), "utf-8", (err) => {

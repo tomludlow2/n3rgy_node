@@ -7,8 +7,8 @@ Exported as a  module
 
 const https = require('https');
 const fs = require('fs');
-const electricity_to_cost = require("/home/tom/n3rgy_node/electricity_to_cost.js");
-const gas_to_cost = require("/home/tom/n3rgy_node/gas_to_cost.js");
+const electricity_to_cost = require("/home/tom/n3rgy_node/functions/electricity_to_cost.js");
+const gas_to_cost = require("/home/tom/n3rgy_node/functions/gas_to_cost.js");
 
 //Read your access token from config.json
 let config;
