@@ -1,9 +1,11 @@
+console.log("Running the processing file for prepared files");
 const fs = require('fs');
 const path = require('path');
 const request = require('request');
 
 const directoryPath = '/home/tom/n3rgy_node/pending_influx';
 const files = fs.readdirSync(directoryPath);
+console.log(files);
 
 
 //Read your access token from config.json
@@ -20,6 +22,7 @@ function processNextFile(index) {
   const filePath = path.join(directoryPath, file);
 
   fs.readFile(filePath, 'utf8', (err, fileContents) => {
+    console.log(`Now processing file ${filePath}`);
     if (err) {
       console.error(`Error reading file ${filePath}: ${err.message}`);
       rl.close();

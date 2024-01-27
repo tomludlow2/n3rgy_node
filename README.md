@@ -235,6 +235,13 @@ Using `functions/prepare_for_influx.js` and `get_for_dates_full.js`
 - The next step is the call `process_prepared_files.js` which will loop through all the files one by one and submit, it manually asks for the array key of the next file you want to import, (noted in current example as files are no zero-prefixed) this creates an abnormal entry pattern
 
 
+## Correcting errors in the database
+- Open `get_for_dates_full.js` and ammend the first dates parameter to the day before and the day after the error.
+- `node get_for_dates_full.js`
+- Open `reports/data_to_import_01_gas/electric.json`
+- Find the incorrect line and adjust accordingly
+- Run `prepare_for_influx.js`
+- Run `process_prepared_files.js`
 
 
 ## Misc File Information

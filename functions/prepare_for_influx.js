@@ -42,6 +42,7 @@ function getMatchingFiles(directoryPath) {
     const pattern = /^data_to_import_(\d+)_(electric|gas)\.json$/;
 
     files.forEach((file) => {
+    	console.log("Checking each file, next file: ", file);
         const filePath = path.join(directoryPath, file);
 
         if (fs.statSync(filePath).isFile()) {

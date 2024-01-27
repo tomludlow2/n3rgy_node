@@ -31,6 +31,7 @@ try {
 
 //Get the last 7 days.
 async function get_for_date_range(start_date, end_date, log_file) {
+	console.log("INFO: Getting info for date range", start_date, end_date, log_file);
 	//Expects YYYY-MM-DD HH:MM
 	/*OLD FUNCTION
 	const today = new Date(); // Get the current date and time
@@ -121,7 +122,7 @@ async function get_for_date_range(start_date, end_date, log_file) {
 
 					//Write out the report to the json file
 					const json_str = JSON.stringify(output, null, 2);
-
+					console.log("Storing information in the ", log_file, " for electric");
 					if( log_file ) {
 						const electric_report_file = `/home/tom/n3rgy_node/reports/${log_file}_electric.json`;
 						fs.writeFileSync(electric_report_file, json_str, 'utf8', (err) => {
@@ -203,6 +204,7 @@ async function get_for_date_range(start_date, end_date, log_file) {
 
 					//Write out the report to the json file
 					const json_str = JSON.stringify(output, null, 2);
+					console.log("Storing information in the ", log_file, " for gas");
 					const gas_report_file = `/home/tom/n3rgy_node/reports/${log_file}_gas.json`;
 					fs.writeFileSync(gas_report_file, json_str, 'utf8', (err) => {
 						if(err) {

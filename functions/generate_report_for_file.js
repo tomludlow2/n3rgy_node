@@ -1,5 +1,5 @@
-const electricity_to_cost = require("/home/tom/n3rgy_node/electricity_to_cost.js");
-const gas_to_cost = require("/home/tom/n3rgy_node/gas_to_cost.js");
+const electricity_to_cost = require("/home/tom/n3rgy_node/functions/electricity_to_cost.js");
+const gas_to_cost = require("/home/tom/n3rgy_node/functions/gas_to_cost.js");
 const fs = require('fs');
 
 const electric_files_to_run = [
