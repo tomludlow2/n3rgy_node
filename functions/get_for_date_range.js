@@ -7,13 +7,13 @@ Exported as a  module
 
 const https = require('https');
 const fs = require('fs');
-const electricity_to_cost = require("/home/tom/n3rgy_node/functions/electricity_to_cost.js");
-const gas_to_cost = require("/home/tom/n3rgy_node/functions/gas_to_cost.js");
+const electricity_to_cost = require("/home/tom/n3rgy/n3rgy_node/functions/electricity_to_cost.js");
+const gas_to_cost = require("/home/tom/n3rgy/n3rgy_node/functions/gas_to_cost.js");
 
 //Read your access token from config.json
 let config;
 try {
-	config = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/config.json', 'utf-8'));
+	config = JSON.parse(fs.readFileSync('/home/tom/n3rgy/n3rgy_node/config.json', 'utf-8'));
 }catch(error) {
 	console.error('Error reading config.json: ', error.message);
 	process.exit(1);
@@ -22,7 +22,7 @@ try {
 //Read your tariff from tariff.json
 let tariff;
 try {
-	tariff = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/tariff.json', 'utf-8'));
+	tariff = JSON.parse(fs.readFileSync('/home/tom/n3rgy/n3rgy_node/tariff.json', 'utf-8'));
 }catch(error) {
 	console.error('Error reading tariff.json: ', error.message);
 	process.exit(1);
@@ -124,7 +124,7 @@ async function get_for_date_range(start_date, end_date, log_file) {
 					const json_str = JSON.stringify(output, null, 2);
 					console.log("Storing information in the ", log_file, " for electric");
 					if( log_file ) {
-						const electric_report_file = `/home/tom/n3rgy_node/reports/${log_file}_electric.json`;
+						const electric_report_file = `/home/tom/n3rgy/n3rgy_node/reports/${log_file}_electric.json`;
 						fs.writeFileSync(electric_report_file, json_str, 'utf8', (err) => {
 							if(err) {
 								console.error("Could not write electric file:", err);
@@ -137,7 +137,7 @@ async function get_for_date_range(start_date, end_date, log_file) {
 					resolve(output);
 				}catch (error) {
 					if( log_file ) {
-						const electric_report_file = `/home/tom/n3rgy_node/reports/${log_file}_electric.json`;
+						const electric_report_file = `/home/tom/n3rgy/n3rgy_node/reports/${log_file}_electric.json`;
 						fs.writeFileSync(electric_report_file, error, 'utf8', (err) => {
 							if(err) {
 								console.error("Could not write electric file:", err);
@@ -154,7 +154,7 @@ async function get_for_date_range(start_date, end_date, log_file) {
 
 		req_e.on('error', (err) => {
 			if( log_file ) {
-				const electric_report_file = `/home/tom/n3rgy_node/reports/${log_file}_electric.json`;
+				const electric_report_file = `/home/tom/n3rgy/n3rgy_node/reports/${log_file}_electric.json`;
 				fs.writeFileSync(electric_report_file, error, 'utf8', (err) => {
 					if(err) {
 						console.error("Could not write electric file:", err);
@@ -205,7 +205,7 @@ async function get_for_date_range(start_date, end_date, log_file) {
 					//Write out the report to the json file
 					const json_str = JSON.stringify(output, null, 2);
 					console.log("Storing information in the ", log_file, " for gas");
-					const gas_report_file = `/home/tom/n3rgy_node/reports/${log_file}_gas.json`;
+					const gas_report_file = `/home/tom/n3rgy/n3rgy_node/reports/${log_file}_gas.json`;
 					fs.writeFileSync(gas_report_file, json_str, 'utf8', (err) => {
 						if(err) {
 							console.error("Could not write gas file:", err);
@@ -216,7 +216,7 @@ async function get_for_date_range(start_date, end_date, log_file) {
 					resolve(output);
 				}catch (error) {
 					if( log_file ) {
-						const gas_report_file = `/home/tom/n3rgy_node/reports/${log_file}_gas.json`;
+						const gas_report_file = `/home/tom/n3rgy/n3rgy_node/reports/${log_file}_gas.json`;
 						fs.writeFileSync(gas_report_file, error, 'utf8', (err) => {
 							if(err) {
 								console.error("Could not write gas file:", err);
@@ -233,7 +233,7 @@ async function get_for_date_range(start_date, end_date, log_file) {
 
 		req_g.on('error', (err) => {
 			if( log_file ) {
-				const gas_report_file = `/home/tom/n3rgy_node/reports/${log_file}_gas.json`;
+				const gas_report_file = `/home/tom/n3rgy/n3rgy_node/reports/${log_file}_gas.json`;
 				fs.writeFileSync(gas_report_file, error, 'utf8', (err) => {
 					if(err) {
 						console.error("Could not write gas file:", err);

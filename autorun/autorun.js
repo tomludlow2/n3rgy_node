@@ -17,10 +17,10 @@ function clear_directory(directory_path) {
   console.log('Directory cleared.');
 }
 
-clear_directory("/home/tom/n3rgy_node/reports");
-clear_directory("/home/tom/n3rgy_node/pending_influx");
+clear_directory("/home/tom/n3rgy/n3rgy_node/reports");
+clear_directory("/home/tom/n3rgy/n3rgy_node/pending_influx");
 
-const fetcher = require("/home/tom/n3rgy_node/functions/get_for_date_range.js");
+const fetcher = require("/home/tom/n3rgy/n3rgy_node/functions/get_for_date_range.js");
 
 function formatDate(date) {
   const year = date.getFullYear();
@@ -78,12 +78,12 @@ const { spawn } = require('child_process');
 		  try {
 		    // Run prepare_for_influx.js
 		    console.log('Running prepare_for_influx.js...');
-		    const prepareForInfluxOutput = await runScript('/home/tom/n3rgy_node/functions/prepare_for_influx.js', []);
+		    const prepareForInfluxOutput = await runScript('/home/tom/n3rgy/n3rgy_node/functions/prepare_for_influx.js', []);
 		    console.log('prepare_for_influx.js completed successfully:', prepareForInfluxOutput);
 
 		    // Run process_prepared_files.js
 		    console.log('Running process_prepared_files.js...');
-		    await runScript('/home/tom/n3rgy_node/functions/auto_process_prepared_files.js', []);
+		    await runScript('/home/tom/n3rgy/n3rgy_node/functions/auto_process_prepared_files.js', []);
 		    console.log('process_prepared_files.js completed successfully.');
 		  } catch (error) {
 		    console.error(`Error: ${error}`);

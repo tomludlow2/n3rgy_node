@@ -3,7 +3,7 @@ const path = require('path');
 const request = require('request');
 const readline = require('readline');
 
-const directoryPath = '/home/tom/n3rgy_node/pending_influx';
+const directoryPath = '/home/tom/n3rgy/n3rgy_node/pending_influx';
 const files = fs.readdirSync(directoryPath);
 const rl = readline.createInterface({
   input: process.stdin,
@@ -13,7 +13,7 @@ const rl = readline.createInterface({
 //Read your access token from config.json
 let config;
 try {
-  config = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/config.json', 'utf-8'));
+  config = JSON.parse(fs.readFileSync('/home/tom/n3rgy/n3rgy_node/config.json', 'utf-8'));
 }catch(error) {
   console.error('Error reading config.json: ', error.message);
   process.exit(1);

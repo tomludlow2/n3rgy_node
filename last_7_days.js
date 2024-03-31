@@ -7,13 +7,13 @@ This file will run the last 7 consec days of data to produce a report on the gas
 */
 const https = require('https');
 const fs = require('fs');
-const electricity_to_cost = require("/home/tom/n3rgy_node/functions/electricity_to_cost.js");
-const gas_to_cost = require("/home/tom/n3rgy_node/functions/gas_to_cost.js");
+const electricity_to_cost = require("/home/tom/n3rgy/n3rgy_node/functions/electricity_to_cost.js");
+const gas_to_cost = require("/home/tom/n3rgy/n3rgy_node/functions/gas_to_cost.js");
 
 //Read your access token from config.json
 let config;
 try {
-	config = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/config.json', 'utf-8'));
+	config = JSON.parse(fs.readFileSync('/home/tom/n3rgy/n3rgy_node/config.json', 'utf-8'));
 }catch(error) {
 	console.error('Error reading config.json: ', error.message);
 	process.exit(1);
@@ -22,7 +22,7 @@ try {
 //Read your tariff from tariff.json
 let tariff;
 try {
-	tariff = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/tariff.json', 'utf-8'));
+	tariff = JSON.parse(fs.readFileSync('/home/tom/n3rgy/n3rgy_node/tariff.json', 'utf-8'));
 }catch(error) {
 	console.error('Error reading tariff.json: ', error.message);
 	process.exit(1);
@@ -110,8 +110,8 @@ const req_e = https.request(options_electricity, (res) => {
 
 			//Write out the report to the json file
 			const json_str = JSON.stringify(output, null, 2);
-			const electric_report_file = "/home/tom/n3rgy_node/reports/last_7_days_electric.json";
-			fs.writeFile(electric_report_file, json_str, 'utf8', (err) => {
+			const electric_report_file = "/home/tom/n3rgy/n3rgy_node/reports/last_7_days_electric.json";
+			fs.writeFile(electric_report_file, json_str,{flag: "a+", encoding: 'utf8'}, (err) => {
 				if(err) {
 					console.error("Could not write electric file:", err);
 				}else {
@@ -158,7 +158,7 @@ const req_g = https.request(options_gas, (res) => {
 
 			//Write out the report to the json file
 			const json_str = JSON.stringify(output, null, 2);
-			const gas_report_file = "/home/tom/n3rgy_node/reports/last_7_days_gas.json";
+			const gas_report_file = "/home/tom/n3rgy/n3rgy_node/reports/last_7_days_gas.json";
 			fs.writeFile(gas_report_file, json_str, 'utf8', (err) => {
 				if(err) {
 					console.error("Could not write gas file:", err);

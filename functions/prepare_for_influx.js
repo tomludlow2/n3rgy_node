@@ -1,15 +1,15 @@
 //This function prepares a given data set for insertion into the InfluxDB Node API that I have made
 
-const electricity_to_cost = require("/home/tom/n3rgy_node/functions/electricity_to_cost_basic.js");
-const gas_to_cost = require("/home/tom/n3rgy_node/functions/gas_to_cost_basic.js");
+const electricity_to_cost = require("/home/tom/n3rgy/n3rgy_node/functions/electricity_to_cost_basic.js");
+const gas_to_cost = require("/home/tom/n3rgy/n3rgy_node/functions/gas_to_cost_basic.js");
 const fs = require('fs');
 const path = require("path");
-const directoryPath = '/home/tom/n3rgy_node/reports';
+const directoryPath = '/home/tom/n3rgy/n3rgy_node/reports';
 
 //Read your access token from config.json
 let config;
 try {
-	config = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/config.json', 'utf-8'));
+	config = JSON.parse(fs.readFileSync('/home/tom/n3rgy/n3rgy_node/config.json', 'utf-8'));
 }catch(error) {
 	console.error('Error reading config.json: ', error.message);
 	process.exit(1);
@@ -19,7 +19,7 @@ const gas_conversion = config.gas_conversion;
 //Read your tariff from tariff.json
 let tariff;
 try {
-	tariff = JSON.parse(fs.readFileSync('/home/tom/n3rgy_node/tariff.json', 'utf-8'));
+	tariff = JSON.parse(fs.readFileSync('/home/tom/n3rgy/n3rgy_node/tariff.json', 'utf-8'));
 }catch(error) {
 	console.error('Error reading tariff.json: ', error.message);
 	process.exit(1);
@@ -28,8 +28,8 @@ try {
 
 //Requires two files, an electric and gas to insert
 /*
-const electric_file = "/home/tom/n3rgy_node/reports/data_to_import_0_electric.json";;
-const gas_file = "/home/tom/n3rgy_node/reports/data_to_import_0_gas.json";
+const electric_file = "/home/tom/n3rgy/n3rgy_node/reports/data_to_import_0_electric.json";;
+const gas_file = "/home/tom/n3rgy/n3rgy_node/reports/data_to_import_0_gas.json";
 */
 
 //Or, search a directory for matching files in format "data_to_import_x_electric/gas.json"
@@ -131,7 +131,7 @@ function convertData(gas_file, electric_file, output_file_name) {
 
 	//console.log(output);
 
-	const output_file = "/home/tom/n3rgy_node/pending_influx/" + output_file_name+ ".json";
+	const output_file = "/home/tom/n3rgy/n3rgy_node/pending_influx/" + output_file_name+ ".json";
 	fs.writeFile(output_file, JSON.stringify(output, null, 2), "utf-8", (err) => {
 	 	if (err) {
 			console.error(`Error writing to ${output_file}: ${err}`);

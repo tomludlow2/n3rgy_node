@@ -1,4 +1,4 @@
-const fetcher = require("/home/tom/n3rgy_node/functions/get_for_date_range.js");
+const fetcher = require("/home/tom/n3rgy/n3rgy_node/functions/get_for_date_range.js");
 
 
 const spread = 
