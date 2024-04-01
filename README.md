@@ -222,6 +222,7 @@ Run this file, which will produce a report file for all files in the array.
 ## Preparing for influx & inserting into the InfluxDB
 Using `functions/prepare_for_influx.js` and `get_for_dates_full.js`
 - Run `get_for_dates_full.js` which you should populate to fill the relevant dates (using 5 day intervals helps to prevent excessive data per one file insert). Field 2 needs to contain a filename in the format of `data_to_import_xx` where xx is an incremental value, and will be appended with the gas and then electric values ready for import.
+- You can check these files for anomalies (where usage is >1.2kW in one hour) with `check_for_anomalies.js`
 - These files will be stored in `reports/` directory.
 - Then run `prepare_for_influx.js` to prepare the files, this will perform the following.
 - Opens relevant files, including `config` and `tariff` -> Both must have been set before calling this

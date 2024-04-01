@@ -3,12 +3,10 @@ const gas_to_cost = require("/home/tom/n3rgy/n3rgy_node/functions/gas_to_cost.js
 const fs = require('fs');
 
 const electric_files_to_run = [
-	"example_file_1_electric.json",
-	"example_file_2_electric.json"];
+	"/home/tom/n3rgy/n3rgy_node/reports/JAN_24_electric.json"];
 
 const gas_files_to_run = [
-	"example_file_1_gas.json",
-	"example_file_2_gas.json"];
+	"/home/tom/n3rgy/n3rgy_node/reports/JAN_24_gas.json"];
 
 //Read your access token from config.json
 let config;
