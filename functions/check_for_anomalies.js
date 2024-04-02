@@ -12,7 +12,7 @@ const processFile = (filename) => {
     
     console.log(`Timestamps in ${filename}:`);
     data.forEach(point => {
-        if (point.value > 1.0) {
+        if (point.value > 1.2) {
             console.log(point.timestamp, " - value: ",  point.value);
         }
     });

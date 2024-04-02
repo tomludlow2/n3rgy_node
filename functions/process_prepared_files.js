@@ -38,12 +38,13 @@ function processNextFile(index) {
 
     fileContents = JSON.parse(fileContents);
 
+    const endpoint= config.influx_endpoint + "/submit_energy"
     const options = {
       method: 'POST',
-      url: 'http://192.168.68.68:52525/submit_energy',
+      url: endpoint,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + config.bearer_token,
+        'Authorization': 'Bearer ' + config.influx_token,
       },
       body: JSON.stringify(fileContents),
     };

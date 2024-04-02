@@ -110,9 +110,11 @@ async function autorun() {
 
 
 
-
-		// Start running the scripts
-		runScripts();
+		Promise.all(results).then( () => {
+			// Start running the scripts
+			runScripts();
+		});
+		
 
 
 		

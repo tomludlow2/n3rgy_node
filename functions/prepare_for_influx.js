@@ -108,7 +108,7 @@ function convertData(gas_file, electric_file, output_file_name) {
 		let new_data_point = {
 			timestamp: data_point.timestamp,
 			usage: processesd_data[0],
-			cost: processesd_data[1]
+			cost: processesd_data[1]*100
 		}
 		gas_output.push(new_data_point);
 	});
@@ -119,7 +119,7 @@ function convertData(gas_file, electric_file, output_file_name) {
 		let new_data_point = {
 			timestamp: data_point.timestamp,
 			usage: processesd_data[0],
-			cost: processesd_data[1]
+			cost: processesd_data[1]*100
 		}
 		electric_output.push(new_data_point);
 	});

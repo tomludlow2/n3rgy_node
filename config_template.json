@@ -3,5 +3,6 @@
 	"start_date": "20231001",
 	"end_date": "20231004",
 	"gas_conversion": 11.3910733,
-	"bearer_token": ""
+	"bearer_token": "",
+	"influx_endpoint": "192.168.1.1:52525"
 }
