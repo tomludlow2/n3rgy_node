@@ -112,7 +112,11 @@ async function autorun() {
 
 		Promise.all(results).then( () => {
 			// Start running the scripts
-			runScripts();
+			console.log("Introducing delay to ensure all files are ready")
+			delay(10000).then(() => {
+				runScripts();
+			});
+			
 		});
 		
 
@@ -122,6 +126,10 @@ async function autorun() {
 		console.error('Error:', error.message);
 	}
 
+}
+
+function delay(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
 autorun();
